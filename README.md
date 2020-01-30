@@ -1,1 +1,4 @@
-tp-scala
+# Tp-scala
+
+## Simple Scala workshop
+
