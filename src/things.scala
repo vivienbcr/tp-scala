@@ -14,9 +14,9 @@ object things {
   // 4 el
   case class Car(brand: String, countryOfBirth: String, maxSpeed: Int, speeds: Int) extends Things
   // 2 el 1 array
-  case class Film(mainActors: Seq[String], dateOfRelease: Date) extends Things
+  case class Film(mainActors: Array[String], dateOfRelease: Date) extends Things
   // 2 el 1 array
-  case class Actor(name: String, filmsPlayed: Seq[String]) extends Things
+  case class Actor(name: String, filmsPlayed: Array[String]) extends Things
 
   // Return empty class from given pattern
   def findClass(arr : Array[String]): Option[Things] = {
@@ -31,11 +31,11 @@ object things {
         try {
           //Try to parse date
           val pDate = dateFormat.parse(arr(1))
-          Some(Film(arr(0).split(';').toSeq,pDate))
+          Some(Film(arr(0).split(';').toArray,pDate))
         } catch {
           //no date => its an actor
           case e: ParseException =>
-            Some(Actor(arr(0),arr(1).split(';').toSeq))
+            Some(Actor(arr(0),arr(1).split(';').toArray))
         }
       }
       case _ => {
@@ -43,8 +43,6 @@ object things {
       }
     }
   }
-
-
   def main(args: Array[String]): Unit = {
     // Import data
     val filename = "datasets/dataset.csv"
